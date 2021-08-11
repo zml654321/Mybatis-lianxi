@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chb.dao.UserDao">
+
+    <select id="selectUser" resultType="com.chb.pojo.User">
+  select * from user
+ </select>
+    <select id="selectUserById" resultType="com.chb.pojo.User">
+select * from user where id = #{id}
+</select>
+    <select id="selectUserByNP" resultType="com.chb.pojo.User">
+     select * from user where username = #{username} and password = #{pwd}
+   </select>
+    <select id="selectUserByNP2" parameterType="map" resultType="com.chb.pojo.User">
+select * from user where username = #{username} and password = #{pwd}
+</select>
+    <insert id="addUser" parameterType="com.chb.pojo.User">
+    insert into user (id,username,password) values (#{id},#{username},#{password})
+</insert>
+    <update id="updateUser" parameterType="com.chb.pojo.User">
+  update user set username=#{username},password=#{password} where id = #{id}
+</update>
+    <delete id="deleteUser" parameterType="int">
+  delete from user where id = #{id}
+</delete>
+    <select id="selectUsers" parameterType="map" resultType="com.chb.pojo.User">
+  select * from user limit #{startIndex},#{pageSize}
+</select>
+</mapper>
