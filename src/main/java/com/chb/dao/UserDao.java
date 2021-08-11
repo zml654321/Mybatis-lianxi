@@ -31,4 +31,7 @@ public interface UserDao {
     //根据id删除用
     @Delete("delete from user where id = #{id}")
     int deleteUsers(int id);
+    //根据id查询用户
+    User queryUserById(@Param("id") int id);
+    int updateUserss(Map map);
 }
